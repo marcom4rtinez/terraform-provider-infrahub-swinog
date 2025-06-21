@@ -1,0 +1,112 @@
+mutation L3interfaceCreate(
+    $data: InfraInterfaceL3CreateInput!
+  ) {
+  InfraInterfaceL3Create(data: $data) {
+    object {
+        id
+        role {
+          id
+          value
+        }
+        name {
+          id
+          value
+        }
+        enabled {
+          id
+          value
+        }
+        description {
+          id
+          value
+        }
+        device {
+          node {
+            id
+          }
+        }
+        status {
+          value
+          id
+        }
+      }
+    }
+  }
+
+
+mutation L3interfaceUpsert($data: InfraInterfaceL3UpsertInput!) {
+  InfraInterfaceL3Upsert(data: $data) {
+    object {
+        id
+        role {
+          id
+          value
+        }
+        name {
+          id
+          value
+        }
+        enabled {
+          id
+          value
+        }
+        description {
+          id
+          value
+        }
+        device {
+          node {
+            id
+          }
+        }
+        status {
+          value
+          id
+        }
+      }
+    }
+  }
+
+
+mutation L3interfaceDelete($id: String!) {
+  InfraInterfaceL3Delete(data: {id: $id}) {
+    ok
+  }
+}
+
+
+
+query L3interface($edges_node_description_value: [String]) {
+  InfraInterfaceL3(description__values: $edges_node_description_value) {
+    edges {
+      node {
+        id
+        role {
+          id
+          value
+        }
+        name {
+          id
+          value
+        }
+        enabled {
+          id
+          value
+        }
+        description {
+          id
+          value
+        }
+        device {
+          node {
+            id
+          }
+        }
+        status {
+          value
+          id
+        }
+      }
+    }
+  }
+}
