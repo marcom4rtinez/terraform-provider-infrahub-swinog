@@ -1,0 +1,124 @@
+mutation L2interfaceCreate(
+    $data: InfraInterfaceL2CreateInput!
+  ) {
+  InfraInterfaceL2Create(data: $data) {
+    object {
+        id
+        l2_mode {
+          id
+          value
+        }
+        role {
+          id
+          value
+        }
+        name {
+          id
+          value
+        }
+        enabled {
+          id
+          value
+        }
+        description {
+          id
+          value
+        }
+        device {
+          node {
+            id
+          }
+        }
+        status {
+          value
+          id
+        }
+      }
+    }
+  }
+
+
+mutation L2interfaceUpsert($data: InfraInterfaceL2UpsertInput!) {
+  InfraInterfaceL2Upsert(data: $data) {
+    object {
+        id
+        l2_mode {
+          id
+          value
+        }
+        role {
+          id
+          value
+        }
+        name {
+          id
+          value
+        }
+        enabled {
+          id
+          value
+        }
+        description {
+          id
+          value
+        }
+        device {
+          node {
+            id
+          }
+        }
+        status {
+          value
+          id
+        }
+      }
+    }
+  }
+
+
+mutation L2interfaceDelete($id: String!) {
+  InfraInterfaceL2Delete(data: {id: $id}) {
+    ok
+  }
+}
+
+
+
+query L2interface($edges_node_description_value: [String]) {
+  InfraInterfaceL2(description__values: $edges_node_description_value) {
+    edges {
+      node {
+        id
+        l2_mode {
+          id
+          value
+        }
+        role {
+          id
+          value
+        }
+        name {
+          id
+          value
+        }
+        enabled {
+          id
+          value
+        }
+        description {
+          id
+          value
+        }
+        device {
+          node {
+            id
+          }
+        }
+        status {
+          value
+          id
+        }
+      }
+    }
+  }
+}

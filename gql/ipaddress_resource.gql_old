@@ -1,0 +1,53 @@
+mutation IpaddressCreate(
+    $data: InfraIPAddressCreateInput!
+  ) {
+    InfraIPAddressCreate(data: $data) {
+    object {
+        id
+        address {
+            value
+        }
+        description {
+            value
+        }
+    }
+  }
+}
+
+mutation IpaddressUpsert($data: InfraIPAddressUpsertInput!) {
+  InfraIPAddressUpsert(data: $data) {
+    object {
+      id
+      address {
+        value
+      }
+      description {
+        value
+      }
+    }
+    ok
+  }
+}
+
+mutation IpaddressDelete($id: String!) {
+  InfraIPAddressDelete(data: {id: $id}) {
+    ok
+  }
+}
+
+
+query Ipaddress($edges_node_address_value: String!) {
+  InfraIPAddress(address__value: $edges_node_address_value)  {
+    edges {
+      node {
+        id
+        address {
+          value
+        }
+        description {
+          value
+        }
+      }
+    }
+  }
+}
