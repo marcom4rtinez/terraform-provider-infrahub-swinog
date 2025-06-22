@@ -27,6 +27,8 @@ func NewL3interfaceResource() resource.Resource {
 type l3interfaceResource struct {
 	client                       *graphql.Client
 	Edges_node_id                types.String `tfsdk:"id"`
+	Edges_node_full_ipv4_id      types.String `tfsdk:"full_ipv4_id"`
+	Edges_node_full_ipv4_value   types.String `tfsdk:"full_ipv4_value"`
 	Edges_node_role_id           types.String `tfsdk:"role_id"`
 	Edges_node_role_value        types.String `tfsdk:"role_value"`
 	Edges_node_name_id           types.String `tfsdk:"name_id"`
@@ -52,6 +54,9 @@ func (r *l3interfaceResource) Schema(_ context.Context, _ resource.SchemaRequest
 			"id": schema.StringAttribute{
 				Computed: true,
 			},
+			"full_ipv4_id": schema.StringAttribute{
+				Computed: true,
+			},
 			"role_id": schema.StringAttribute{
 				Computed: true,
 			},
@@ -66,6 +71,10 @@ func (r *l3interfaceResource) Schema(_ context.Context, _ resource.SchemaRequest
 			},
 			"status_id": schema.StringAttribute{
 				Computed: true,
+			},
+			"full_ipv4_value": schema.StringAttribute{
+				Computed: true,
+				Optional: true,
 			},
 			"role_value": schema.StringAttribute{
 				Computed: true,
@@ -109,6 +118,7 @@ func (r *l3interfaceResource) Create(ctx context.Context, req resource.CreateReq
 	var defaultL3interface infrahub_sdk.InfraInterfaceL3CreateInput
 
 	// Assign each field, using the helper function to handle defaults
+	defaultL3interface.Full_ipv4.Value = plan.Edges_node_full_ipv4_value.ValueString()
 	defaultL3interface.Role.Value = plan.Edges_node_role_value.ValueString()
 	defaultL3interface.Name.Value = plan.Edges_node_name_value.ValueString()
 	defaultL3interface.Enabled.Value = plan.Edges_node_enabled_value.ValueBool()
@@ -127,6 +137,8 @@ func (r *l3interfaceResource) Create(ctx context.Context, req resource.CreateReq
 		return
 	}
 	plan.Edges_node_id = types.StringValue(response.InfraInterfaceL3Create.Object.GetId())
+	plan.Edges_node_full_ipv4_id = types.StringValue(response.InfraInterfaceL3Create.Object.Full_ipv4.GetId())
+	plan.Edges_node_full_ipv4_value = types.StringValue(response.InfraInterfaceL3Create.Object.Full_ipv4.Value)
 	plan.Edges_node_role_id = types.StringValue(response.InfraInterfaceL3Create.Object.Role.GetId())
 	plan.Edges_node_role_value = types.StringValue(response.InfraInterfaceL3Create.Object.Role.Value)
 	plan.Edges_node_name_id = types.StringValue(response.InfraInterfaceL3Create.Object.Name.GetId())
@@ -180,6 +192,8 @@ func (r *l3interfaceResource) Read(ctx context.Context, req resource.ReadRequest
 		return
 	}
 	state.Edges_node_id = types.StringValue(response.InfraInterfaceL3.Edges[0].Node.GetId())
+	state.Edges_node_full_ipv4_id = types.StringValue(response.InfraInterfaceL3.Edges[0].Node.Full_ipv4.GetId())
+	state.Edges_node_full_ipv4_value = types.StringValue(response.InfraInterfaceL3.Edges[0].Node.Full_ipv4.Value)
 	state.Edges_node_role_id = types.StringValue(response.InfraInterfaceL3.Edges[0].Node.Role.GetId())
 	state.Edges_node_role_value = types.StringValue(response.InfraInterfaceL3.Edges[0].Node.Role.Value)
 	state.Edges_node_name_id = types.StringValue(response.InfraInterfaceL3.Edges[0].Node.Name.GetId())
@@ -220,6 +234,7 @@ func (r *l3interfaceResource) Update(ctx context.Context, req resource.UpdateReq
 	var updateInput infrahub_sdk.InfraInterfaceL3UpsertInput
 
 	// Prepare the update input using values from the plan and applying defaults
+	updateInput.Full_ipv4.Value = setDefault(plan.Edges_node_full_ipv4_value.ValueString(), state.Edges_node_full_ipv4_value.ValueString())
 	updateInput.Role.Value = setDefault(plan.Edges_node_role_value.ValueString(), state.Edges_node_role_value.ValueString())
 	updateInput.Name.Value = setDefault(plan.Edges_node_name_value.ValueString(), state.Edges_node_name_value.ValueString())
 	updateInput.Enabled.Value = plan.Edges_node_enabled_value.ValueBool()
@@ -241,6 +256,8 @@ func (r *l3interfaceResource) Update(ctx context.Context, req resource.UpdateReq
 		return
 	}
 	plan.Edges_node_id = types.StringValue(response.InfraInterfaceL3Upsert.Object.GetId())
+	plan.Edges_node_full_ipv4_id = types.StringValue(response.InfraInterfaceL3Upsert.Object.Full_ipv4.GetId())
+	plan.Edges_node_full_ipv4_value = types.StringValue(response.InfraInterfaceL3Upsert.Object.Full_ipv4.Value)
 	plan.Edges_node_role_id = types.StringValue(response.InfraInterfaceL3Upsert.Object.Role.GetId())
 	plan.Edges_node_role_value = types.StringValue(response.InfraInterfaceL3Upsert.Object.Role.Value)
 	plan.Edges_node_name_id = types.StringValue(response.InfraInterfaceL3Upsert.Object.Name.GetId())

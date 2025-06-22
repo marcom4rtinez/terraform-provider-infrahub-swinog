@@ -3290,21 +3290,21 @@ func (v *IPAddressPoolInput) GetPrefixlen() int { return v.Prefixlen }
 type InfraDeviceCreateInput struct {
 	Id                   string                    `json:"id"`
 	Role                 TextAttributeCreate       `json:"role"`
-	Status               TextAttributeCreate       `json:"status"`
 	Name                 TextAttributeCreate       `json:"name"`
 	Description          TextAttributeCreate       `json:"description"`
+	Status               TextAttributeCreate       `json:"status"`
 	Profiles             []RelatedNodeInput        `json:"profiles"`
-	Member_of_groups     []RelatedNodeInput        `json:"member_of_groups"`
 	Artifacts            []RelatedNodeInput        `json:"artifacts"`
 	Subscriber_of_groups []RelatedNodeInput        `json:"subscriber_of_groups"`
-	Asn                  RelatedNodeInput          `json:"asn"`
-	Interfaces           []RelatedNodeInput        `json:"interfaces"`
+	Member_of_groups     []RelatedNodeInput        `json:"member_of_groups"`
+	Platform             RelatedNodeInput          `json:"platform"`
 	Primary_address      RelatedIPAddressNodeInput `json:"primary_address"`
 	Location             RelatedNodeInput          `json:"location"`
-	Device_type          RelatedNodeInput          `json:"device_type"`
-	Platform             RelatedNodeInput          `json:"platform"`
+	Interfaces           []RelatedNodeInput        `json:"interfaces"`
 	Topology             RelatedNodeInput          `json:"topology"`
 	Tags                 []RelatedNodeInput        `json:"tags"`
+	Asn                  RelatedNodeInput          `json:"asn"`
+	Device_type          RelatedNodeInput          `json:"device_type"`
 }
 
 // GetId returns InfraDeviceCreateInput.Id, and is useful for accessing the field via an interface.
@@ -3313,20 +3313,17 @@ func (v *InfraDeviceCreateInput) GetId() string { return v.Id }
 // GetRole returns InfraDeviceCreateInput.Role, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetRole() TextAttributeCreate { return v.Role }
 
-// GetStatus returns InfraDeviceCreateInput.Status, and is useful for accessing the field via an interface.
-func (v *InfraDeviceCreateInput) GetStatus() TextAttributeCreate { return v.Status }
-
 // GetName returns InfraDeviceCreateInput.Name, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetName() TextAttributeCreate { return v.Name }
 
 // GetDescription returns InfraDeviceCreateInput.Description, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetDescription() TextAttributeCreate { return v.Description }
 
+// GetStatus returns InfraDeviceCreateInput.Status, and is useful for accessing the field via an interface.
+func (v *InfraDeviceCreateInput) GetStatus() TextAttributeCreate { return v.Status }
+
 // GetProfiles returns InfraDeviceCreateInput.Profiles, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetProfiles() []RelatedNodeInput { return v.Profiles }
-
-// GetMember_of_groups returns InfraDeviceCreateInput.Member_of_groups, and is useful for accessing the field via an interface.
-func (v *InfraDeviceCreateInput) GetMember_of_groups() []RelatedNodeInput { return v.Member_of_groups }
 
 // GetArtifacts returns InfraDeviceCreateInput.Artifacts, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetArtifacts() []RelatedNodeInput { return v.Artifacts }
@@ -3336,11 +3333,11 @@ func (v *InfraDeviceCreateInput) GetSubscriber_of_groups() []RelatedNodeInput {
 	return v.Subscriber_of_groups
 }
 
-// GetAsn returns InfraDeviceCreateInput.Asn, and is useful for accessing the field via an interface.
-func (v *InfraDeviceCreateInput) GetAsn() RelatedNodeInput { return v.Asn }
+// GetMember_of_groups returns InfraDeviceCreateInput.Member_of_groups, and is useful for accessing the field via an interface.
+func (v *InfraDeviceCreateInput) GetMember_of_groups() []RelatedNodeInput { return v.Member_of_groups }
 
-// GetInterfaces returns InfraDeviceCreateInput.Interfaces, and is useful for accessing the field via an interface.
-func (v *InfraDeviceCreateInput) GetInterfaces() []RelatedNodeInput { return v.Interfaces }
+// GetPlatform returns InfraDeviceCreateInput.Platform, and is useful for accessing the field via an interface.
+func (v *InfraDeviceCreateInput) GetPlatform() RelatedNodeInput { return v.Platform }
 
 // GetPrimary_address returns InfraDeviceCreateInput.Primary_address, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetPrimary_address() RelatedIPAddressNodeInput {
@@ -3350,11 +3347,8 @@ func (v *InfraDeviceCreateInput) GetPrimary_address() RelatedIPAddressNodeInput 
 // GetLocation returns InfraDeviceCreateInput.Location, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetLocation() RelatedNodeInput { return v.Location }
 
-// GetDevice_type returns InfraDeviceCreateInput.Device_type, and is useful for accessing the field via an interface.
-func (v *InfraDeviceCreateInput) GetDevice_type() RelatedNodeInput { return v.Device_type }
-
-// GetPlatform returns InfraDeviceCreateInput.Platform, and is useful for accessing the field via an interface.
-func (v *InfraDeviceCreateInput) GetPlatform() RelatedNodeInput { return v.Platform }
+// GetInterfaces returns InfraDeviceCreateInput.Interfaces, and is useful for accessing the field via an interface.
+func (v *InfraDeviceCreateInput) GetInterfaces() []RelatedNodeInput { return v.Interfaces }
 
 // GetTopology returns InfraDeviceCreateInput.Topology, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetTopology() RelatedNodeInput { return v.Topology }
@@ -3362,25 +3356,31 @@ func (v *InfraDeviceCreateInput) GetTopology() RelatedNodeInput { return v.Topol
 // GetTags returns InfraDeviceCreateInput.Tags, and is useful for accessing the field via an interface.
 func (v *InfraDeviceCreateInput) GetTags() []RelatedNodeInput { return v.Tags }
 
+// GetAsn returns InfraDeviceCreateInput.Asn, and is useful for accessing the field via an interface.
+func (v *InfraDeviceCreateInput) GetAsn() RelatedNodeInput { return v.Asn }
+
+// GetDevice_type returns InfraDeviceCreateInput.Device_type, and is useful for accessing the field via an interface.
+func (v *InfraDeviceCreateInput) GetDevice_type() RelatedNodeInput { return v.Device_type }
+
 type InfraDeviceUpsertInput struct {
 	Id                   string                    `json:"id"`
 	Hfid                 []string                  `json:"hfid"`
 	Role                 TextAttributeUpdate       `json:"role"`
-	Status               TextAttributeUpdate       `json:"status"`
 	Name                 TextAttributeUpdate       `json:"name"`
 	Description          TextAttributeUpdate       `json:"description"`
+	Status               TextAttributeUpdate       `json:"status"`
 	Profiles             []RelatedNodeInput        `json:"profiles"`
-	Member_of_groups     []RelatedNodeInput        `json:"member_of_groups"`
 	Artifacts            []RelatedNodeInput        `json:"artifacts"`
 	Subscriber_of_groups []RelatedNodeInput        `json:"subscriber_of_groups"`
-	Asn                  RelatedNodeInput          `json:"asn"`
-	Interfaces           []RelatedNodeInput        `json:"interfaces"`
+	Member_of_groups     []RelatedNodeInput        `json:"member_of_groups"`
+	Platform             RelatedNodeInput          `json:"platform"`
 	Primary_address      RelatedIPAddressNodeInput `json:"primary_address"`
 	Location             RelatedNodeInput          `json:"location"`
-	Device_type          RelatedNodeInput          `json:"device_type"`
-	Platform             RelatedNodeInput          `json:"platform"`
+	Interfaces           []RelatedNodeInput        `json:"interfaces"`
 	Topology             RelatedNodeInput          `json:"topology"`
 	Tags                 []RelatedNodeInput        `json:"tags"`
+	Asn                  RelatedNodeInput          `json:"asn"`
+	Device_type          RelatedNodeInput          `json:"device_type"`
 }
 
 // GetId returns InfraDeviceUpsertInput.Id, and is useful for accessing the field via an interface.
@@ -3392,20 +3392,17 @@ func (v *InfraDeviceUpsertInput) GetHfid() []string { return v.Hfid }
 // GetRole returns InfraDeviceUpsertInput.Role, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetRole() TextAttributeUpdate { return v.Role }
 
-// GetStatus returns InfraDeviceUpsertInput.Status, and is useful for accessing the field via an interface.
-func (v *InfraDeviceUpsertInput) GetStatus() TextAttributeUpdate { return v.Status }
-
 // GetName returns InfraDeviceUpsertInput.Name, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetName() TextAttributeUpdate { return v.Name }
 
 // GetDescription returns InfraDeviceUpsertInput.Description, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetDescription() TextAttributeUpdate { return v.Description }
 
+// GetStatus returns InfraDeviceUpsertInput.Status, and is useful for accessing the field via an interface.
+func (v *InfraDeviceUpsertInput) GetStatus() TextAttributeUpdate { return v.Status }
+
 // GetProfiles returns InfraDeviceUpsertInput.Profiles, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetProfiles() []RelatedNodeInput { return v.Profiles }
-
-// GetMember_of_groups returns InfraDeviceUpsertInput.Member_of_groups, and is useful for accessing the field via an interface.
-func (v *InfraDeviceUpsertInput) GetMember_of_groups() []RelatedNodeInput { return v.Member_of_groups }
 
 // GetArtifacts returns InfraDeviceUpsertInput.Artifacts, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetArtifacts() []RelatedNodeInput { return v.Artifacts }
@@ -3415,11 +3412,11 @@ func (v *InfraDeviceUpsertInput) GetSubscriber_of_groups() []RelatedNodeInput {
 	return v.Subscriber_of_groups
 }
 
-// GetAsn returns InfraDeviceUpsertInput.Asn, and is useful for accessing the field via an interface.
-func (v *InfraDeviceUpsertInput) GetAsn() RelatedNodeInput { return v.Asn }
+// GetMember_of_groups returns InfraDeviceUpsertInput.Member_of_groups, and is useful for accessing the field via an interface.
+func (v *InfraDeviceUpsertInput) GetMember_of_groups() []RelatedNodeInput { return v.Member_of_groups }
 
-// GetInterfaces returns InfraDeviceUpsertInput.Interfaces, and is useful for accessing the field via an interface.
-func (v *InfraDeviceUpsertInput) GetInterfaces() []RelatedNodeInput { return v.Interfaces }
+// GetPlatform returns InfraDeviceUpsertInput.Platform, and is useful for accessing the field via an interface.
+func (v *InfraDeviceUpsertInput) GetPlatform() RelatedNodeInput { return v.Platform }
 
 // GetPrimary_address returns InfraDeviceUpsertInput.Primary_address, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetPrimary_address() RelatedIPAddressNodeInput {
@@ -3429,11 +3426,8 @@ func (v *InfraDeviceUpsertInput) GetPrimary_address() RelatedIPAddressNodeInput 
 // GetLocation returns InfraDeviceUpsertInput.Location, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetLocation() RelatedNodeInput { return v.Location }
 
-// GetDevice_type returns InfraDeviceUpsertInput.Device_type, and is useful for accessing the field via an interface.
-func (v *InfraDeviceUpsertInput) GetDevice_type() RelatedNodeInput { return v.Device_type }
-
-// GetPlatform returns InfraDeviceUpsertInput.Platform, and is useful for accessing the field via an interface.
-func (v *InfraDeviceUpsertInput) GetPlatform() RelatedNodeInput { return v.Platform }
+// GetInterfaces returns InfraDeviceUpsertInput.Interfaces, and is useful for accessing the field via an interface.
+func (v *InfraDeviceUpsertInput) GetInterfaces() []RelatedNodeInput { return v.Interfaces }
 
 // GetTopology returns InfraDeviceUpsertInput.Topology, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetTopology() RelatedNodeInput { return v.Topology }
@@ -3441,19 +3435,25 @@ func (v *InfraDeviceUpsertInput) GetTopology() RelatedNodeInput { return v.Topol
 // GetTags returns InfraDeviceUpsertInput.Tags, and is useful for accessing the field via an interface.
 func (v *InfraDeviceUpsertInput) GetTags() []RelatedNodeInput { return v.Tags }
 
+// GetAsn returns InfraDeviceUpsertInput.Asn, and is useful for accessing the field via an interface.
+func (v *InfraDeviceUpsertInput) GetAsn() RelatedNodeInput { return v.Asn }
+
+// GetDevice_type returns InfraDeviceUpsertInput.Device_type, and is useful for accessing the field via an interface.
+func (v *InfraDeviceUpsertInput) GetDevice_type() RelatedNodeInput { return v.Device_type }
+
 type InfraInterfaceL2CreateInput struct {
 	Id                   string                  `json:"id"`
 	L2_mode              TextAttributeCreate     `json:"l2_mode"`
-	Name                 TextAttributeCreate     `json:"name"`
 	Description          TextAttributeCreate     `json:"description"`
-	Enabled              CheckboxAttributeCreate `json:"enabled"`
-	Status               TextAttributeCreate     `json:"status"`
 	Role                 TextAttributeCreate     `json:"role"`
+	Enabled              CheckboxAttributeCreate `json:"enabled"`
+	Name                 TextAttributeCreate     `json:"name"`
+	Status               TextAttributeCreate     `json:"status"`
 	Profiles             []RelatedNodeInput      `json:"profiles"`
 	Device               RelatedNodeInput        `json:"device"`
-	Tags                 []RelatedNodeInput      `json:"tags"`
-	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
 	Subscriber_of_groups []RelatedNodeInput      `json:"subscriber_of_groups"`
+	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
+	Tags                 []RelatedNodeInput      `json:"tags"`
 	Artifacts            []RelatedNodeInput      `json:"artifacts"`
 }
 
@@ -3463,20 +3463,20 @@ func (v *InfraInterfaceL2CreateInput) GetId() string { return v.Id }
 // GetL2_mode returns InfraInterfaceL2CreateInput.L2_mode, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetL2_mode() TextAttributeCreate { return v.L2_mode }
 
-// GetName returns InfraInterfaceL2CreateInput.Name, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2CreateInput) GetName() TextAttributeCreate { return v.Name }
-
 // GetDescription returns InfraInterfaceL2CreateInput.Description, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetDescription() TextAttributeCreate { return v.Description }
+
+// GetRole returns InfraInterfaceL2CreateInput.Role, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2CreateInput) GetRole() TextAttributeCreate { return v.Role }
 
 // GetEnabled returns InfraInterfaceL2CreateInput.Enabled, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetEnabled() CheckboxAttributeCreate { return v.Enabled }
 
+// GetName returns InfraInterfaceL2CreateInput.Name, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2CreateInput) GetName() TextAttributeCreate { return v.Name }
+
 // GetStatus returns InfraInterfaceL2CreateInput.Status, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetStatus() TextAttributeCreate { return v.Status }
-
-// GetRole returns InfraInterfaceL2CreateInput.Role, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2CreateInput) GetRole() TextAttributeCreate { return v.Role }
 
 // GetProfiles returns InfraInterfaceL2CreateInput.Profiles, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetProfiles() []RelatedNodeInput { return v.Profiles }
@@ -3484,18 +3484,18 @@ func (v *InfraInterfaceL2CreateInput) GetProfiles() []RelatedNodeInput { return 
 // GetDevice returns InfraInterfaceL2CreateInput.Device, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetDevice() RelatedNodeInput { return v.Device }
 
-// GetTags returns InfraInterfaceL2CreateInput.Tags, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2CreateInput) GetTags() []RelatedNodeInput { return v.Tags }
+// GetSubscriber_of_groups returns InfraInterfaceL2CreateInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2CreateInput) GetSubscriber_of_groups() []RelatedNodeInput {
+	return v.Subscriber_of_groups
+}
 
 // GetMember_of_groups returns InfraInterfaceL2CreateInput.Member_of_groups, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetMember_of_groups() []RelatedNodeInput {
 	return v.Member_of_groups
 }
 
-// GetSubscriber_of_groups returns InfraInterfaceL2CreateInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2CreateInput) GetSubscriber_of_groups() []RelatedNodeInput {
-	return v.Subscriber_of_groups
-}
+// GetTags returns InfraInterfaceL2CreateInput.Tags, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2CreateInput) GetTags() []RelatedNodeInput { return v.Tags }
 
 // GetArtifacts returns InfraInterfaceL2CreateInput.Artifacts, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2CreateInput) GetArtifacts() []RelatedNodeInput { return v.Artifacts }
@@ -3504,16 +3504,16 @@ type InfraInterfaceL2UpsertInput struct {
 	Id                   string                  `json:"id"`
 	Hfid                 []string                `json:"hfid"`
 	L2_mode              TextAttributeUpdate     `json:"l2_mode"`
-	Name                 TextAttributeUpdate     `json:"name"`
 	Description          TextAttributeUpdate     `json:"description"`
-	Enabled              CheckboxAttributeUpdate `json:"enabled"`
-	Status               TextAttributeUpdate     `json:"status"`
 	Role                 TextAttributeUpdate     `json:"role"`
+	Enabled              CheckboxAttributeUpdate `json:"enabled"`
+	Name                 TextAttributeUpdate     `json:"name"`
+	Status               TextAttributeUpdate     `json:"status"`
 	Profiles             []RelatedNodeInput      `json:"profiles"`
 	Device               RelatedNodeInput        `json:"device"`
-	Tags                 []RelatedNodeInput      `json:"tags"`
-	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
 	Subscriber_of_groups []RelatedNodeInput      `json:"subscriber_of_groups"`
+	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
+	Tags                 []RelatedNodeInput      `json:"tags"`
 	Artifacts            []RelatedNodeInput      `json:"artifacts"`
 }
 
@@ -3526,20 +3526,20 @@ func (v *InfraInterfaceL2UpsertInput) GetHfid() []string { return v.Hfid }
 // GetL2_mode returns InfraInterfaceL2UpsertInput.L2_mode, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetL2_mode() TextAttributeUpdate { return v.L2_mode }
 
-// GetName returns InfraInterfaceL2UpsertInput.Name, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2UpsertInput) GetName() TextAttributeUpdate { return v.Name }
-
 // GetDescription returns InfraInterfaceL2UpsertInput.Description, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetDescription() TextAttributeUpdate { return v.Description }
+
+// GetRole returns InfraInterfaceL2UpsertInput.Role, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2UpsertInput) GetRole() TextAttributeUpdate { return v.Role }
 
 // GetEnabled returns InfraInterfaceL2UpsertInput.Enabled, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetEnabled() CheckboxAttributeUpdate { return v.Enabled }
 
+// GetName returns InfraInterfaceL2UpsertInput.Name, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2UpsertInput) GetName() TextAttributeUpdate { return v.Name }
+
 // GetStatus returns InfraInterfaceL2UpsertInput.Status, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetStatus() TextAttributeUpdate { return v.Status }
-
-// GetRole returns InfraInterfaceL2UpsertInput.Role, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2UpsertInput) GetRole() TextAttributeUpdate { return v.Role }
 
 // GetProfiles returns InfraInterfaceL2UpsertInput.Profiles, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetProfiles() []RelatedNodeInput { return v.Profiles }
@@ -3547,54 +3547,58 @@ func (v *InfraInterfaceL2UpsertInput) GetProfiles() []RelatedNodeInput { return 
 // GetDevice returns InfraInterfaceL2UpsertInput.Device, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetDevice() RelatedNodeInput { return v.Device }
 
-// GetTags returns InfraInterfaceL2UpsertInput.Tags, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2UpsertInput) GetTags() []RelatedNodeInput { return v.Tags }
+// GetSubscriber_of_groups returns InfraInterfaceL2UpsertInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2UpsertInput) GetSubscriber_of_groups() []RelatedNodeInput {
+	return v.Subscriber_of_groups
+}
 
 // GetMember_of_groups returns InfraInterfaceL2UpsertInput.Member_of_groups, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetMember_of_groups() []RelatedNodeInput {
 	return v.Member_of_groups
 }
 
-// GetSubscriber_of_groups returns InfraInterfaceL2UpsertInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL2UpsertInput) GetSubscriber_of_groups() []RelatedNodeInput {
-	return v.Subscriber_of_groups
-}
+// GetTags returns InfraInterfaceL2UpsertInput.Tags, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL2UpsertInput) GetTags() []RelatedNodeInput { return v.Tags }
 
 // GetArtifacts returns InfraInterfaceL2UpsertInput.Artifacts, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL2UpsertInput) GetArtifacts() []RelatedNodeInput { return v.Artifacts }
 
 type InfraInterfaceL3CreateInput struct {
 	Id                   string                  `json:"id"`
-	Name                 TextAttributeCreate     `json:"name"`
+	Full_ipv4            TextAttributeCreate     `json:"full_ipv4"`
 	Description          TextAttributeCreate     `json:"description"`
-	Enabled              CheckboxAttributeCreate `json:"enabled"`
-	Status               TextAttributeCreate     `json:"status"`
 	Role                 TextAttributeCreate     `json:"role"`
+	Enabled              CheckboxAttributeCreate `json:"enabled"`
+	Name                 TextAttributeCreate     `json:"name"`
+	Status               TextAttributeCreate     `json:"status"`
 	Profiles             []RelatedNodeInput      `json:"profiles"`
 	Device               RelatedNodeInput        `json:"device"`
-	Tags                 []RelatedNodeInput      `json:"tags"`
-	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
 	Subscriber_of_groups []RelatedNodeInput      `json:"subscriber_of_groups"`
+	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
+	Tags                 []RelatedNodeInput      `json:"tags"`
 	Artifacts            []RelatedNodeInput      `json:"artifacts"`
 }
 
 // GetId returns InfraInterfaceL3CreateInput.Id, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetId() string { return v.Id }
 
-// GetName returns InfraInterfaceL3CreateInput.Name, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3CreateInput) GetName() TextAttributeCreate { return v.Name }
+// GetFull_ipv4 returns InfraInterfaceL3CreateInput.Full_ipv4, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3CreateInput) GetFull_ipv4() TextAttributeCreate { return v.Full_ipv4 }
 
 // GetDescription returns InfraInterfaceL3CreateInput.Description, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetDescription() TextAttributeCreate { return v.Description }
 
+// GetRole returns InfraInterfaceL3CreateInput.Role, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3CreateInput) GetRole() TextAttributeCreate { return v.Role }
+
 // GetEnabled returns InfraInterfaceL3CreateInput.Enabled, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetEnabled() CheckboxAttributeCreate { return v.Enabled }
 
+// GetName returns InfraInterfaceL3CreateInput.Name, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3CreateInput) GetName() TextAttributeCreate { return v.Name }
+
 // GetStatus returns InfraInterfaceL3CreateInput.Status, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetStatus() TextAttributeCreate { return v.Status }
-
-// GetRole returns InfraInterfaceL3CreateInput.Role, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3CreateInput) GetRole() TextAttributeCreate { return v.Role }
 
 // GetProfiles returns InfraInterfaceL3CreateInput.Profiles, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetProfiles() []RelatedNodeInput { return v.Profiles }
@@ -3602,18 +3606,18 @@ func (v *InfraInterfaceL3CreateInput) GetProfiles() []RelatedNodeInput { return 
 // GetDevice returns InfraInterfaceL3CreateInput.Device, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetDevice() RelatedNodeInput { return v.Device }
 
-// GetTags returns InfraInterfaceL3CreateInput.Tags, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3CreateInput) GetTags() []RelatedNodeInput { return v.Tags }
+// GetSubscriber_of_groups returns InfraInterfaceL3CreateInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3CreateInput) GetSubscriber_of_groups() []RelatedNodeInput {
+	return v.Subscriber_of_groups
+}
 
 // GetMember_of_groups returns InfraInterfaceL3CreateInput.Member_of_groups, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetMember_of_groups() []RelatedNodeInput {
 	return v.Member_of_groups
 }
 
-// GetSubscriber_of_groups returns InfraInterfaceL3CreateInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3CreateInput) GetSubscriber_of_groups() []RelatedNodeInput {
-	return v.Subscriber_of_groups
-}
+// GetTags returns InfraInterfaceL3CreateInput.Tags, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3CreateInput) GetTags() []RelatedNodeInput { return v.Tags }
 
 // GetArtifacts returns InfraInterfaceL3CreateInput.Artifacts, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3CreateInput) GetArtifacts() []RelatedNodeInput { return v.Artifacts }
@@ -3621,16 +3625,17 @@ func (v *InfraInterfaceL3CreateInput) GetArtifacts() []RelatedNodeInput { return
 type InfraInterfaceL3UpsertInput struct {
 	Id                   string                  `json:"id"`
 	Hfid                 []string                `json:"hfid"`
-	Name                 TextAttributeUpdate     `json:"name"`
+	Full_ipv4            TextAttributeUpdate     `json:"full_ipv4"`
 	Description          TextAttributeUpdate     `json:"description"`
-	Enabled              CheckboxAttributeUpdate `json:"enabled"`
-	Status               TextAttributeUpdate     `json:"status"`
 	Role                 TextAttributeUpdate     `json:"role"`
+	Enabled              CheckboxAttributeUpdate `json:"enabled"`
+	Name                 TextAttributeUpdate     `json:"name"`
+	Status               TextAttributeUpdate     `json:"status"`
 	Profiles             []RelatedNodeInput      `json:"profiles"`
 	Device               RelatedNodeInput        `json:"device"`
-	Tags                 []RelatedNodeInput      `json:"tags"`
-	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
 	Subscriber_of_groups []RelatedNodeInput      `json:"subscriber_of_groups"`
+	Member_of_groups     []RelatedNodeInput      `json:"member_of_groups"`
+	Tags                 []RelatedNodeInput      `json:"tags"`
 	Artifacts            []RelatedNodeInput      `json:"artifacts"`
 }
 
@@ -3640,20 +3645,23 @@ func (v *InfraInterfaceL3UpsertInput) GetId() string { return v.Id }
 // GetHfid returns InfraInterfaceL3UpsertInput.Hfid, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetHfid() []string { return v.Hfid }
 
-// GetName returns InfraInterfaceL3UpsertInput.Name, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3UpsertInput) GetName() TextAttributeUpdate { return v.Name }
+// GetFull_ipv4 returns InfraInterfaceL3UpsertInput.Full_ipv4, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3UpsertInput) GetFull_ipv4() TextAttributeUpdate { return v.Full_ipv4 }
 
 // GetDescription returns InfraInterfaceL3UpsertInput.Description, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetDescription() TextAttributeUpdate { return v.Description }
 
+// GetRole returns InfraInterfaceL3UpsertInput.Role, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3UpsertInput) GetRole() TextAttributeUpdate { return v.Role }
+
 // GetEnabled returns InfraInterfaceL3UpsertInput.Enabled, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetEnabled() CheckboxAttributeUpdate { return v.Enabled }
 
+// GetName returns InfraInterfaceL3UpsertInput.Name, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3UpsertInput) GetName() TextAttributeUpdate { return v.Name }
+
 // GetStatus returns InfraInterfaceL3UpsertInput.Status, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetStatus() TextAttributeUpdate { return v.Status }
-
-// GetRole returns InfraInterfaceL3UpsertInput.Role, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3UpsertInput) GetRole() TextAttributeUpdate { return v.Role }
 
 // GetProfiles returns InfraInterfaceL3UpsertInput.Profiles, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetProfiles() []RelatedNodeInput { return v.Profiles }
@@ -3661,18 +3669,18 @@ func (v *InfraInterfaceL3UpsertInput) GetProfiles() []RelatedNodeInput { return 
 // GetDevice returns InfraInterfaceL3UpsertInput.Device, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetDevice() RelatedNodeInput { return v.Device }
 
-// GetTags returns InfraInterfaceL3UpsertInput.Tags, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3UpsertInput) GetTags() []RelatedNodeInput { return v.Tags }
+// GetSubscriber_of_groups returns InfraInterfaceL3UpsertInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3UpsertInput) GetSubscriber_of_groups() []RelatedNodeInput {
+	return v.Subscriber_of_groups
+}
 
 // GetMember_of_groups returns InfraInterfaceL3UpsertInput.Member_of_groups, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetMember_of_groups() []RelatedNodeInput {
 	return v.Member_of_groups
 }
 
-// GetSubscriber_of_groups returns InfraInterfaceL3UpsertInput.Subscriber_of_groups, and is useful for accessing the field via an interface.
-func (v *InfraInterfaceL3UpsertInput) GetSubscriber_of_groups() []RelatedNodeInput {
-	return v.Subscriber_of_groups
-}
+// GetTags returns InfraInterfaceL3UpsertInput.Tags, and is useful for accessing the field via an interface.
+func (v *InfraInterfaceL3UpsertInput) GetTags() []RelatedNodeInput { return v.Tags }
 
 // GetArtifacts returns InfraInterfaceL3UpsertInput.Artifacts, and is useful for accessing the field via an interface.
 func (v *InfraInterfaceL3UpsertInput) GetArtifacts() []RelatedNodeInput { return v.Artifacts }
@@ -5003,7 +5011,9 @@ func (v *L3interfaceCreateInfraInterfaceL3Create) GetObject() L3interfaceCreateI
 // Network Layer 3 Interface
 type L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3 struct {
 	// Unique identifier
-	Id          string                                                                                           `json:"id"`
+	Id string `json:"id"`
+	// None (required)
+	Full_ipv4   L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute              `json:"full_ipv4"`
 	Role        L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3RoleDropdown                        `json:"role"`
 	Name        L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3NameTextAttribute                   `json:"name"`
 	Enabled     L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3EnabledCheckboxAttribute            `json:"enabled"`
@@ -5014,6 +5024,11 @@ type L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3 struct {
 
 // GetId returns L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3.Id, and is useful for accessing the field via an interface.
 func (v *L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3) GetId() string { return v.Id }
+
+// GetFull_ipv4 returns L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3.Full_ipv4, and is useful for accessing the field via an interface.
+func (v *L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3) GetFull_ipv4() L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute {
+	return v.Full_ipv4
+}
 
 // GetRole returns L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3.Role, and is useful for accessing the field via an interface.
 func (v *L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3) GetRole() L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3RoleDropdown {
@@ -5243,6 +5258,25 @@ func (v *L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3EnabledChe
 	return v.Value
 }
 
+// L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute includes the requested fields of the GraphQL type TextAttribute.
+// The GraphQL type's documentation follows.
+//
+// Attribute of type Text
+type L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute struct {
+	Id    string `json:"id"`
+	Value string `json:"value"`
+}
+
+// GetId returns L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute.Id, and is useful for accessing the field via an interface.
+func (v *L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute) GetId() string {
+	return v.Id
+}
+
+// GetValue returns L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute.Value, and is useful for accessing the field via an interface.
+func (v *L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3Full_ipv4TextAttribute) GetValue() string {
+	return v.Value
+}
+
 // L3interfaceCreateInfraInterfaceL3CreateObjectInfraInterfaceL3NameTextAttribute includes the requested fields of the GraphQL type TextAttribute.
 // The GraphQL type's documentation follows.
 //
@@ -5365,7 +5399,9 @@ func (v *L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInte
 // Network Layer 3 Interface
 type L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3 struct {
 	// Unique identifier
-	Id          string                                                                                                                                `json:"id"`
+	Id string `json:"id"`
+	// None (required)
+	Full_ipv4   L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute              `json:"full_ipv4"`
 	Role        L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3RoleDropdown                        `json:"role"`
 	Name        L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3NameTextAttribute                   `json:"name"`
 	Enabled     L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3EnabledCheckboxAttribute            `json:"enabled"`
@@ -5377,6 +5413,11 @@ type L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfac
 // GetId returns L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3.Id, and is useful for accessing the field via an interface.
 func (v *L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3) GetId() string {
 	return v.Id
+}
+
+// GetFull_ipv4 returns L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3.Full_ipv4, and is useful for accessing the field via an interface.
+func (v *L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3) GetFull_ipv4() L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute {
+	return v.Full_ipv4
 }
 
 // GetRole returns L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3.Role, and is useful for accessing the field via an interface.
@@ -5607,6 +5648,25 @@ func (v *L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInte
 	return v.Value
 }
 
+// L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute includes the requested fields of the GraphQL type TextAttribute.
+// The GraphQL type's documentation follows.
+//
+// Attribute of type Text
+type L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute struct {
+	Id    string `json:"id"`
+	Value string `json:"value"`
+}
+
+// GetId returns L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute.Id, and is useful for accessing the field via an interface.
+func (v *L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute) GetId() string {
+	return v.Id
+}
+
+// GetValue returns L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute.Value, and is useful for accessing the field via an interface.
+func (v *L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3Full_ipv4TextAttribute) GetValue() string {
+	return v.Value
+}
+
 // L3interfaceInfraInterfaceL3PaginatedInfraInterfaceL3EdgesEdgedInfraInterfaceL3NodeInfraInterfaceL3NameTextAttribute includes the requested fields of the GraphQL type TextAttribute.
 // The GraphQL type's documentation follows.
 //
@@ -5693,7 +5753,9 @@ func (v *L3interfaceUpsertInfraInterfaceL3Upsert) GetObject() L3interfaceUpsertI
 // Network Layer 3 Interface
 type L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3 struct {
 	// Unique identifier
-	Id          string                                                                                           `json:"id"`
+	Id string `json:"id"`
+	// None (required)
+	Full_ipv4   L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute              `json:"full_ipv4"`
 	Role        L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3RoleDropdown                        `json:"role"`
 	Name        L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3NameTextAttribute                   `json:"name"`
 	Enabled     L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3EnabledCheckboxAttribute            `json:"enabled"`
@@ -5704,6 +5766,11 @@ type L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3 struct {
 
 // GetId returns L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3.Id, and is useful for accessing the field via an interface.
 func (v *L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3) GetId() string { return v.Id }
+
+// GetFull_ipv4 returns L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3.Full_ipv4, and is useful for accessing the field via an interface.
+func (v *L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3) GetFull_ipv4() L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute {
+	return v.Full_ipv4
+}
 
 // GetRole returns L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3.Role, and is useful for accessing the field via an interface.
 func (v *L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3) GetRole() L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3RoleDropdown {
@@ -5930,6 +5997,25 @@ func (v *L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3EnabledChe
 
 // GetValue returns L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3EnabledCheckboxAttribute.Value, and is useful for accessing the field via an interface.
 func (v *L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3EnabledCheckboxAttribute) GetValue() bool {
+	return v.Value
+}
+
+// L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute includes the requested fields of the GraphQL type TextAttribute.
+// The GraphQL type's documentation follows.
+//
+// Attribute of type Text
+type L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute struct {
+	Id    string `json:"id"`
+	Value string `json:"value"`
+}
+
+// GetId returns L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute.Id, and is useful for accessing the field via an interface.
+func (v *L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute) GetId() string {
+	return v.Id
+}
+
+// GetValue returns L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute.Value, and is useful for accessing the field via an interface.
+func (v *L3interfaceUpsertInfraInterfaceL3UpsertObjectInfraInterfaceL3Full_ipv4TextAttribute) GetValue() string {
 	return v.Value
 }
 
@@ -7602,6 +7688,10 @@ query L3interface ($edges_node_description_value: [String]) {
 		edges {
 			node {
 				id
+				full_ipv4 {
+					id
+					value
+				}
 				role {
 					id
 					value
@@ -7666,6 +7756,10 @@ mutation L3interfaceCreate ($data: InfraInterfaceL3CreateInput!) {
 	InfraInterfaceL3Create(data: $data) {
 		object {
 			id
+			full_ipv4 {
+				id
+				value
+			}
 			role {
 				id
 				value
@@ -7764,6 +7858,10 @@ mutation L3interfaceUpsert ($data: InfraInterfaceL3UpsertInput!) {
 	InfraInterfaceL3Upsert(data: $data) {
 		object {
 			id
+			full_ipv4 {
+				id
+				value
+			}
 			role {
 				id
 				value
